@@ -1,0 +1,6 @@
+[Unit]
+Description=Sparky 3D Craft — periodic health check (logs to journal)
+
+[Service]
+Type=oneshot
+ExecStart={{SPARKY_CURRENT}}/deploy/healthcheck.sh --quiet

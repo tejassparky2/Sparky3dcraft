@@ -1,0 +1,41 @@
+[Unit]
+Description=Sparky 3D Craft — Medusa server (Store/Admin API + Admin UI)
+Documentation=file:///opt/sparky/current/docs/OPERATIONS.md
+After=network-online.target postgresql.service redis-server.service
+Wants=network-online.target
+Requires=postgresql.service redis-server.service
+
+[Service]
+Type=simple
+User={{SPARKY_USER}}
+Group={{SPARKY_USER}}
+WorkingDirectory={{SPARKY_CURRENT}}/apps/backend/.medusa/server
+EnvironmentFile={{SPARKY_BACKEND_ENV}}
+# CLI tools write ~/.config; /opt is read-only under ProtectSystem=strict
+Environment=HOME={{SPARKY_VAR}}
+Environment=NODE_ENV=production MEDUSA_WORKER_MODE=server DISABLE_MEDUSA_ADMIN=false HOST=127.0.0.1 PORT=9000
+Environment=NODE_OPTIONS=--max-old-space-size={{SERVER_HEAP_MB}}
+ExecStart={{SPARKY_CURRENT}}/apps/backend/.medusa/server/node_modules/.bin/medusa start
+Restart=on-failure
+RestartSec=5
+StartLimitIntervalSec=0
+TimeoutStartSec=180
+TimeoutStopSec=30
+KillSignal=SIGTERM
+LimitNOFILE=65536
+# hardening
+NoNewPrivileges=true
+PrivateTmp=true
+ProtectSystem=strict
+ProtectHome=true
+ProtectKernelTunables=true
+ProtectKernelModules=true
+ProtectControlGroups=true
+RestrictSUIDSGID=true
+ReadWritePaths={{SPARKY_VAR}} {{SPARKY_LOG_DIR}} {{SPARKY_CURRENT}}/apps/backend/.medusa/server
+StandardOutput=journal
+StandardError=journal
+SyslogIdentifier=sparky-medusa-server
+
+[Install]
+WantedBy=multi-user.target

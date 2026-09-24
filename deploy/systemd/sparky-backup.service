@@ -1,0 +1,9 @@
+[Unit]
+Description=Sparky 3D Craft — database/config backup
+After=postgresql.service
+
+[Service]
+Type=oneshot
+ExecStart={{SPARKY_CURRENT}}/deploy/backup.sh --quiet
+Nice=10
+IOSchedulingClass=idle

@@ -1,0 +1,4 @@
+# CURRENT_STAGE / CURRENT_CMD / SPARKY_LOG are consumed by on_error() and run()
+# in lib/common.sh (sourced), which shellcheck cannot see across files.
+disable=SC2034
+external-sources=true

@@ -1,0 +1,36 @@
+[Unit]
+Description=Sparky 3D Craft — Next.js storefront
+After=network-online.target sparky-medusa-server.service
+Wants=network-online.target sparky-medusa-server.service
+
+[Service]
+Type=simple
+User={{SPARKY_USER}}
+Group={{SPARKY_USER}}
+WorkingDirectory={{SPARKY_CURRENT}}/apps/storefront
+EnvironmentFile={{SPARKY_STOREFRONT_ENV}}
+# CLI tools write ~/.config; /opt is read-only under ProtectSystem=strict
+Environment=HOME={{SPARKY_VAR}}
+Environment=NODE_ENV=production HOSTNAME=127.0.0.1 PORT=3000 NEXT_TELEMETRY_DISABLED=1
+Environment=NODE_OPTIONS=--max-old-space-size={{STOREFRONT_HEAP_MB}}
+ExecStart={{SPARKY_CURRENT}}/apps/storefront/node_modules/.bin/next start -H 127.0.0.1 -p 3000
+Restart=on-failure
+RestartSec=5
+StartLimitIntervalSec=0
+TimeoutStopSec=30
+LimitNOFILE=65536
+NoNewPrivileges=true
+PrivateTmp=true
+ProtectSystem=strict
+ProtectHome=true
+ProtectKernelTunables=true
+ProtectKernelModules=true
+ProtectControlGroups=true
+RestrictSUIDSGID=true
+ReadWritePaths={{SPARKY_CURRENT}}/apps/storefront/.next {{SPARKY_LOG_DIR}} {{SPARKY_VAR}}
+StandardOutput=journal
+StandardError=journal
+SyslogIdentifier=sparky-storefront
+
+[Install]
+WantedBy=multi-user.target
