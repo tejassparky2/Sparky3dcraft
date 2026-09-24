@@ -23,13 +23,16 @@ export type AdminOpts = {
   shopDomain: string // "xyz.myshopify.com"
   accessToken: string
   apiVersion: string // e.g. "2026-07"
+  /** TEST ONLY: override https://<shop>/admin/api (points at tests/fakes/shopify-admin-fake.mjs). */
+  baseUrl?: string
   fetchImpl?: typeof fetch
 }
 
 export class ShopifyGraphQLError extends Error {}
 
 export async function gql<T = any>(opts: AdminOpts, query: string, variables: Record<string, unknown> = {}): Promise<T> {
-  const url = `https://${opts.shopDomain}/admin/api/${opts.apiVersion}/graphql.json`
+  const base = (opts.baseUrl ?? `https://${opts.shopDomain}/admin/api`).replace(/\/$/, "")
+  const url = `${base}/${opts.apiVersion}/graphql.json`
   for (let attempt = 0; attempt < 6; attempt++) {
     const res = await fetchWithRetry(
       url,

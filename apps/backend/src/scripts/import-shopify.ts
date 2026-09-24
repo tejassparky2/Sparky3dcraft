@@ -75,7 +75,9 @@ export default async function importShopify({ container }: ExecArgs) {
     const shopDomain = env("SHOPIFY_SHOP_DOMAIN")
     const accessToken = env("SHOPIFY_ADMIN_TOKEN")
     if (!shopDomain || !accessToken) throw new Error("SHOPIFY_SHOP_DOMAIN and SHOPIFY_ADMIN_TOKEN are required for SHOPIFY_SOURCE=admin")
-    const opts = { shopDomain, accessToken, apiVersion: env("SHOPIFY_API_VERSION") || "2026-07" }
+    const testBase = env("SHOPIFY_ADMIN_API_BASE_TEST_ONLY")
+    if (testBase && process.env.NODE_ENV === "production") throw new Error("SHOPIFY_ADMIN_API_BASE_TEST_ONLY must not be used in production")
+    const opts = { shopDomain, accessToken, apiVersion: env("SHOPIFY_API_VERSION") || "2026-07", baseUrl: testBase || undefined }
     if (mode === "probe") {
       for (const line of await probeAdmin(opts, entities)) logger.info(`[shopify-import] probe: ${line}`)
       return
