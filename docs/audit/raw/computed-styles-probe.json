@@ -1,0 +1,834 @@
+{
+ "home.body": {
+  "font-family": "\"Quattrocento Sans\", sans-serif",
+  "font-size": "16px",
+  "font-weight": "400",
+  "line-height": "28.8px",
+  "letter-spacing": "0.6px",
+  "color": "rgba(37, 37, 37, 0.75)",
+  "background-color": "rgb(239, 236, 236)",
+  "text-transform": "none",
+  "border-radius": "0px",
+  "border": "0px none rgba(37, 37, 37, 0.75)",
+  "padding": "0px",
+  "min-height": "100%",
+  "box-shadow": "none",
+  "max-width": "none",
+  "_rect": [
+   1440,
+   2042
+  ]
+ },
+ "home.html": {
+  "font-family": "\"Times New Roman\"",
+  "font-size": "10px",
+  "font-weight": "400",
+  "line-height": "normal",
+  "letter-spacing": "normal",
+  "color": "rgb(0, 0, 0)",
+  "background-color": "rgba(0, 0, 0, 0)",
+  "text-transform": "none",
+  "border-radius": "0px",
+  "border": "0px none rgb(0, 0, 0)",
+  "padding": "0px",
+  "min-height": "0px",
+  "box-shadow": "none",
+  "max-width": "none",
+  "_rect": [
+   1440,
+   900
+  ]
+ },
+ "home.announcement": {
+  "font-family": "\"Quattrocento Sans\", sans-serif",
+  "font-size": "16px",
+  "font-weight": "400",
+  "line-height": "28.8px",
+  "letter-spacing": "0.6px",
+  "color": "rgba(239, 236, 236, 0.75)",
+  "background-color": "rgb(44, 51, 47)",
+  "text-transform": "none",
+  "border-radius": "0px",
+  "border": "",
+  "padding": "0px",
+  "min-height": "0px",
+  "box-shadow": "none",
+  "max-width": "none",
+  "_rect": [
+   1440,
+   39
+  ]
+ },
+ "home.announcementText": {
+  "font-family": "Trirong, serif",
+  "font-size": "14.3px",
+  "font-weight": "300",
+  "line-height": "18.2px",
+  "letter-spacing": "1px",
+  "color": "rgb(239, 236, 236)",
+  "background-color": "rgba(0, 0, 0, 0)",
+  "text-transform": "none",
+  "border-radius": "0px",
+  "border": "0px none rgb(239, 236, 236)",
+  "padding": "10px 0px",
+  "min-height": "38px",
+  "box-shadow": "none",
+  "max-width": "none",
+  "_rect": [
+   220,
+   38
+  ]
+ },
+ "home.header": {
+  "font-family": "\"Quattrocento Sans\", sans-serif",
+  "font-size": "16px",
+  "font-weight": "400",
+  "line-height": "28.8px",
+  "letter-spacing": "0.6px",
+  "color": "rgba(37, 37, 37, 0.75)",
+  "background-color": "rgb(239, 236, 236)",
+  "text-transform": "none",
+  "border-radius": "0px",
+  "border": "0px none rgba(37, 37, 37, 0.75)",
+  "padding": "0px",
+  "min-height": "0px",
+  "box-shadow": "none",
+  "max-width": "none",
+  "_rect": [
+   1440,
+   175
+  ]
+ },
+ "home.headerInner": {
+  "font-family": "\"Quattrocento Sans\", sans-serif",
+  "font-size": "16px",
+  "font-weight": "400",
+  "line-height": "28.8px",
+  "letter-spacing": "0.6px",
+  "color": "rgba(37, 37, 37, 0.75)",
+  "background-color": "rgba(0, 0, 0, 0)",
+  "text-transform": "none",
+  "border-radius": "0px",
+  "border": "0px none rgba(37, 37, 37, 0.75)",
+  "padding": "20px 50px",
+  "min-height": "0px",
+  "box-shadow": "none",
+  "max-width": "1200px",
+  "_rect": [
+   1200,
+   175
+  ]
+ },
+ "home.logo": {
+  "font-family": "Trirong, serif",
+  "font-size": "14px",
+  "font-weight": "300",
+  "line-height": "0px",
+  "letter-spacing": "0.66px",
+  "color": "rgb(37, 37, 37)",
+  "background-color": "rgba(0, 0, 0, 0)",
+  "text-transform": "none",
+  "border-radius": "0px",
+  "border": "0px none rgb(37, 37, 37)",
+  "padding": "0px",
+  "min-height": "0px",
+  "box-shadow": "none",
+  "max-width": "100%",
+  "_rect": [
+   100,
+   67
+  ]
+ },
+ "home.navLink": {
+  "font-family": "\"Quattrocento Sans\", sans-serif",
+  "font-size": "14px",
+  "font-weight": "400",
+  "line-height": "18.2px",
+  "letter-spacing": "0.6px",
+  "color": "rgba(37, 37, 37, 0.75)",
+  "background-color": "rgba(0, 0, 0, 0)",
+  "text-transform": "none",
+  "border-radius": "0px",
+  "border": "0px none rgba(37, 37, 37, 0.75)",
+  "padding": "12px",
+  "min-height": "0px",
+  "box-shadow": "none",
+  "max-width": "none",
+  "_rect": [
+   63,
+   42
+  ]
+ },
+ "home.navActive": {
+  "font-family": "\"Quattrocento Sans\", sans-serif",
+  "font-size": "14px",
+  "font-weight": "400",
+  "line-height": "18.2px",
+  "letter-spacing": "0.6px",
+  "color": "rgb(37, 37, 37)",
+  "background-color": "rgba(0, 0, 0, 0)",
+  "text-transform": "none",
+  "border-radius": "0px",
+  "border": "0px none rgb(37, 37, 37)",
+  "padding": "0px",
+  "min-height": "auto",
+  "box-shadow": "none",
+  "max-width": "none",
+  "_rect": [
+   39,
+   18
+  ]
+ },
+ "home.h2rich": {
+  "font-family": "Trirong, serif",
+  "font-size": "44px",
+  "font-weight": "300",
+  "line-height": "56px",
+  "letter-spacing": "0.66px",
+  "color": "rgb(37, 37, 37)",
+  "background-color": "rgba(0, 0, 0, 0)",
+  "text-transform": "none",
+  "border-radius": "0px",
+  "border": "0px none rgb(37, 37, 37)",
+  "padding": "0px",
+  "min-height": "0px",
+  "box-shadow": "none",
+  "max-width": "none",
+  "_rect": [
+   780,
+   56
+  ]
+ },
+ "home.pageWidth": {
+  "font-family": "\"Quattrocento Sans\", sans-serif",
+  "font-size": "16px",
+  "font-weight": "400",
+  "line-height": "28.8px",
+  "letter-spacing": "0.6px",
+  "color": "rgba(239, 236, 236, 0.75)",
+  "background-color": "rgba(0, 0, 0, 0)",
+  "text-transform": "none",
+  "border-radius": "0px",
+  "border": "0px none rgba(239, 236, 236, 0.75)",
+  "padding": "0px 50px",
+  "min-height": "0px",
+  "box-shadow": "none",
+  "max-width": "1200px",
+  "_rect": [
+   1200,
+   38
+  ]
+ },
+ "home.collageCardHeading": {
+  "font-family": "Trirong, serif",
+  "font-size": "19.8px",
+  "font-weight": "300",
+  "line-height": "25.2px",
+  "letter-spacing": "0.66px",
+  "color": "rgb(37, 37, 37)",
+  "background-color": "rgba(0, 0, 0, 0)",
+  "text-transform": "none",
+  "border-radius": "0px",
+  "border": "0px none rgb(37, 37, 37)",
+  "padding": "0px",
+  "min-height": "0px",
+  "box-shadow": "none",
+  "max-width": "none",
+  "_rect": [
+   0,
+   0
+  ]
+ },
+ "home.productCard": {
+  "font-family": "\"Quattrocento Sans\", sans-serif",
+  "font-size": "16px",
+  "font-weight": "400",
+  "line-height": "28.8px",
+  "letter-spacing": "0.6px",
+  "color": "rgba(37, 37, 37, 0.75)",
+  "background-color": "rgb(239, 236, 236)",
+  "text-transform": "none",
+  "border-radius": "6px",
+  "border": "1px solid rgba(37, 37, 37, 0.1)",
+  "padding": "0px",
+  "min-height": "0px",
+  "box-shadow": "none",
+  "max-width": "none",
+  "_rect": [
+   353,
+   806
+  ]
+ },
+ "home.productCardInner": {
+  "font-family": "\"Quattrocento Sans\", sans-serif",
+  "font-size": "16px",
+  "font-weight": "400",
+  "line-height": "28.8px",
+  "letter-spacing": "0.6px",
+  "color": "rgba(37, 37, 37, 0.75)",
+  "background-color": "rgba(0, 0, 0, 0)",
+  "text-transform": "none",
+  "border-radius": "0px",
+  "border": "0px none rgba(37, 37, 37, 0.75)",
+  "padding": "0px",
+  "min-height": "auto",
+  "box-shadow": "none",
+  "max-width": "none",
+  "_rect": [
+   351,
+   725
+  ]
+ },
+ "home.cardTitle": {
+  "font-family": "Trirong, serif",
+  "font-size": "14.3px",
+  "font-weight": "300",
+  "line-height": "18.2px",
+  "letter-spacing": "0.66px",
+  "color": "rgb(37, 37, 37)",
+  "background-color": "rgba(0, 0, 0, 0)",
+  "text-transform": "none",
+  "border-radius": "0px",
+  "border": "0px none rgb(37, 37, 37)",
+  "padding": "0px",
+  "min-height": "0px",
+  "box-shadow": "none",
+  "max-width": "none",
+  "_rect": [
+   218,
+   18
+  ]
+ },
+ "home.priceRegular": {
+  "font-family": "\"Quattrocento Sans\", sans-serif",
+  "font-size": "13px",
+  "font-weight": "400",
+  "line-height": "19.5px",
+  "letter-spacing": "1px",
+  "color": "rgba(37, 37, 37, 0.75)",
+  "background-color": "rgba(0, 0, 0, 0)",
+  "text-transform": "none",
+  "border-radius": "0px",
+  "border": "0px none rgba(37, 37, 37, 0.75)",
+  "padding": "0px",
+  "min-height": "0px",
+  "box-shadow": "none",
+  "max-width": "none",
+  "_rect": [
+   110,
+   20
+  ]
+ },
+ "home.priceSale": {
+  "font-family": "\"Quattrocento Sans\", sans-serif",
+  "font-size": "16px",
+  "font-weight": "400",
+  "line-height": "24px",
+  "letter-spacing": "1px",
+  "color": "rgb(37, 37, 37)",
+  "background-color": "rgba(0, 0, 0, 0)",
+  "text-transform": "none",
+  "border-radius": "0px",
+  "border": "0px none rgb(37, 37, 37)",
+  "padding": "0px",
+  "min-height": "0px",
+  "box-shadow": "none",
+  "max-width": "none",
+  "_rect": [
+   118,
+   24
+  ]
+ },
+ "home.badge": {
+  "font-family": "\"Quattrocento Sans\", sans-serif",
+  "font-size": "12px",
+  "font-weight": "400",
+  "line-height": "12px",
+  "letter-spacing": "1px",
+  "color": "rgb(239, 236, 236)",
+  "background-color": "rgb(63, 81, 71)",
+  "text-transform": "none",
+  "border-radius": "6px",
+  "border": "1px solid rgba(239, 236, 236, 0.1)",
+  "padding": "5px 13px 6px",
+  "min-height": "0px",
+  "box-shadow": "none",
+  "max-width": "none",
+  "_rect": [
+   54,
+   25
+  ]
+ },
+ "home.newsletter": {
+  "font-family": "\"Quattrocento Sans\", sans-serif",
+  "font-size": "16px",
+  "font-weight": "400",
+  "line-height": "28.8px",
+  "letter-spacing": "0.6px",
+  "color": "rgba(239, 236, 236, 0.75)",
+  "background-color": "rgb(44, 51, 47)",
+  "text-transform": "none",
+  "border-radius": "0px",
+  "border": "",
+  "padding": "36px 90px 44px",
+  "min-height": "0px",
+  "box-shadow": "none",
+  "max-width": "none",
+  "_rect": [
+   1440,
+   252
+  ]
+ },
+ "home.newsletterH2": {
+  "font-family": "Trirong, serif",
+  "font-size": "44px",
+  "font-weight": "300",
+  "line-height": "56px",
+  "letter-spacing": "0.66px",
+  "color": "rgb(239, 236, 236)",
+  "background-color": "rgba(0, 0, 0, 0)",
+  "text-transform": "none",
+  "border-radius": "0px",
+  "border": "0px none rgb(239, 236, 236)",
+  "padding": "0px",
+  "min-height": "0px",
+  "box-shadow": "none",
+  "max-width": "none",
+  "_rect": [
+   1260,
+   56
+  ]
+ },
+ "home.newsletterInput": {
+  "font-family": "\"Quattrocento Sans\", sans-serif",
+  "font-size": "16px",
+  "font-weight": "400",
+  "line-height": "24px",
+  "letter-spacing": "0.4px",
+  "color": "rgb(239, 236, 236)",
+  "background-color": "rgb(44, 51, 47)",
+  "text-transform": "none",
+  "border-radius": "6px",
+  "border": "0px none rgb(239, 236, 236)",
+  "padding": "15px 50px 15px 15px",
+  "min-height": "2px",
+  "box-shadow": "none",
+  "max-width": "none",
+  "_rect": [
+   358,
+   45
+  ]
+ },
+ "home.footer": {
+  "font-family": "\"Quattrocento Sans\", sans-serif",
+  "font-size": "16px",
+  "font-weight": "400",
+  "line-height": "28.8px",
+  "letter-spacing": "0.6px",
+  "color": "rgba(239, 236, 236, 0.75)",
+  "background-color": "rgb(44, 51, 47)",
+  "text-transform": "none",
+  "border-radius": "0px",
+  "border": "0px none rgba(239, 236, 236, 0.75)",
+  "padding": "0px 0px 36px",
+  "min-height": "0px",
+  "box-shadow": "none",
+  "max-width": "none",
+  "_rect": [
+   1440,
+   167
+  ]
+ },
+ "home.copyright": {
+  "font-family": "\"Quattrocento Sans\", sans-serif",
+  "font-size": "11px",
+  "font-weight": "400",
+  "line-height": "18.7px",
+  "letter-spacing": "0.7px",
+  "color": "rgba(239, 236, 236, 0.75)",
+  "background-color": "rgba(0, 0, 0, 0)",
+  "text-transform": "none",
+  "border-radius": "0px",
+  "border": "0px none rgba(239, 236, 236, 0.75)",
+  "padding": "0px",
+  "min-height": "0px",
+  "box-shadow": "none",
+  "max-width": "none",
+  "_rect": [
+   165,
+   12
+  ]
+ },
+ "fontsLoaded": [
+  "Quattrocento Sans 400 normal",
+  "Trirong 300 normal"
+ ],
+ "headerSticky": "sticky",
+ "headerTopAfterScroll": -1102.8125,
+ "predictive": "SUGGESTIONS | krishna | little bene krishna | PRODUCTS | Cute little bene krishna | Regular price | Rs. 1,200.00 INR  | Sale price | Rs. 799.00 INR | Krishna Rayaru | Regular price | Rs. 1,299.00 INR  | Sale price | Rs. 999.00 INR | Vene Rayaru | Regular price | Rs. 1,399.00 INR  | Sale price | Rs. 999.00 INR | Guru Raghavendra Swamy | Regular price | Rs. 1,200.00 INR  | Sale price | Rs. 999.00 INR | Rayaru With Brundavana | Regular price | Rs. 3,999.00 INR  | Sale price | Rs. 2,999.00 INR | Search for “krish”",
+ "pdp.rayara-ring-special-offer": {
+  "h1": "Rayara Ring Special Offer",
+  "vendorText": "SPARKY 3D CRAFT CO",
+  "buyItNowVisible": [
+   "Buy it now"
+  ],
+  "paymentButtonHTMLLen": 923,
+  "addBtn": "Add to cart",
+  "addBtnDisabled": false,
+  "ymqVisibleText": [],
+  "mediaItems": 2,
+  "mediaTypes": [
+   "image",
+   "image"
+  ],
+  "thumbnails": 0,
+  "zoom": "has zoom/modal icon",
+  "pickup": "",
+  "tax": "Taxes included.",
+  "infoText": "SPARKY 3D CRAFT CO\n\nRayara Ring Special Offer\nRegular price\nRs. 1,400.00 INR \nSale price\nRs. 999.00 INRSale\nTaxes included.\nQuantity\nQuantity\nDecrease quantity for Rayara Ring Special Offer\nIncrease quantity for Rayara Ring Special Offer\nAdd to cart\nBuy it now\n\nLimited time special offer normal price 1400 for 2 offer price 999 for 2 grab soon\n\nShare"
+ },
+ "pdp.buyNowStyle": {
+  "font-family": "\"Quattrocento Sans\", sans-serif",
+  "font-size": "15px",
+  "font-weight": "500",
+  "line-height": "18px",
+  "letter-spacing": "1px",
+  "color": "rgb(255, 255, 255)",
+  "background-color": "rgb(44, 51, 47)",
+  "text-transform": "none",
+  "border-radius": "7px",
+  "border": "0px none rgb(255, 255, 255)",
+  "padding": "15px 30px",
+  "min-height": "47px",
+  "box-shadow": "rgba(0, 0, 0, 0) 0px 0px 0px 0px",
+  "max-width": "none",
+  "_rect": [
+   440,
+   47
+  ]
+ },
+ "pdp.customized-lithophane-lamp": {
+  "h1": "Customized Lithophane Lamp",
+  "vendorText": "SPARKY 3D CRAFT CO",
+  "buyItNowVisible": [],
+  "paymentButtonHTMLLen": 923,
+  "addBtn": "Add to cart",
+  "addBtnDisabled": false,
+  "ymqVisibleText": [
+   "Upload Your Custom Photo\nChoose file\nor drop file to upload",
+   "Upload Your Custom Photo",
+   "Upload Your Custom Photo"
+  ],
+  "mediaItems": 8,
+  "mediaTypes": [
+   "image",
+   "image",
+   "image",
+   "image",
+   "image",
+   "image",
+   "image",
+   "image"
+  ],
+  "thumbnails": 0,
+  "zoom": "has zoom/modal icon",
+  "pickup": "",
+  "tax": "Taxes included.",
+  "infoText": "SPARKY 3D CRAFT CO\n\nCustomized Lithophane Lamp\nRegular price\nRs. 1,299.00 INR \nSale price\nRs. 999.00 INRSale\nTaxes included.\nQuantity\nQuantity\nDecrease quantity for Customized Lithophane Lamp\nIncrease quantity for Customized Lithophane Lamp\nUpload Your Custom Photo\nChoose file\nor drop file to upload\nColor\nAdd to cart\n\nBring Your Favorite Memories to Light\n\nTransform your most cherished photos into a stunning, luminous work of art. Our Custom 3D Photo Lamp utilizes advanced carving technology to create a beautiful, dual-purpose keepsake. During the day, it stands beautifully as a finely sculpte"
+ },
+ "pdp.addBtnStyle": {
+  "font-family": "\"Quattrocento Sans\", sans-serif",
+  "font-size": "15px",
+  "font-weight": "400",
+  "line-height": "18px",
+  "letter-spacing": "1px",
+  "color": "rgb(80, 86, 85)",
+  "background-color": "rgb(239, 236, 236)",
+  "text-transform": "none",
+  "border-radius": "7px",
+  "border": "0px none rgb(80, 86, 85)",
+  "padding": "0px 30px",
+  "min-height": "47px",
+  "box-shadow": "none",
+  "max-width": "none",
+  "_rect": [
+   440,
+   47
+  ]
+ },
+ "pdp.h1Style": {
+  "font-family": "Trirong, serif",
+  "font-size": "44px",
+  "font-weight": "300",
+  "line-height": "56px",
+  "letter-spacing": "0.66px",
+  "color": "rgb(37, 37, 37)",
+  "background-color": "rgba(0, 0, 0, 0)",
+  "text-transform": "none",
+  "border-radius": "0px",
+  "border": "0px none rgb(37, 37, 37)",
+  "padding": "0px",
+  "min-height": "0px",
+  "box-shadow": "none",
+  "max-width": "none",
+  "_rect": [
+   445,
+   112
+  ]
+ },
+ "pdp.qty": {
+  "font-family": "\"Quattrocento Sans\", sans-serif",
+  "font-size": "16px",
+  "font-weight": "400",
+  "line-height": "28.8px",
+  "letter-spacing": "0.6px",
+  "color": "rgb(37, 37, 37)",
+  "background-color": "rgba(0, 0, 0, 0)",
+  "text-transform": "none",
+  "border-radius": "6px",
+  "border": "0px none rgb(37, 37, 37)",
+  "padding": "0px",
+  "min-height": "47px",
+  "box-shadow": "none",
+  "max-width": "none",
+  "_rect": [
+   142,
+   47
+  ]
+ },
+ "pdp.priceSale": {
+  "font-family": "\"Quattrocento Sans\", sans-serif",
+  "font-size": "18px",
+  "font-weight": "400",
+  "line-height": "27px",
+  "letter-spacing": "1.3px",
+  "color": "rgb(37, 37, 37)",
+  "background-color": "rgba(0, 0, 0, 0)",
+  "text-transform": "none",
+  "border-radius": "0px",
+  "border": "0px none rgb(37, 37, 37)",
+  "padding": "0px",
+  "min-height": "0px",
+  "box-shadow": "none",
+  "max-width": "none",
+  "_rect": [
+   135,
+   27
+  ]
+ },
+ "pdp.badge": {
+  "font-family": "\"Quattrocento Sans\", sans-serif",
+  "font-size": "12px",
+  "font-weight": "400",
+  "line-height": "12px",
+  "letter-spacing": "1px",
+  "color": "rgb(239, 236, 236)",
+  "background-color": "rgb(63, 81, 71)",
+  "text-transform": "none",
+  "border-radius": "6px",
+  "border": "1px solid rgba(239, 236, 236, 0.1)",
+  "padding": "5px 13px 6px",
+  "min-height": "0px",
+  "box-shadow": "none",
+  "max-width": "none",
+  "_rect": [
+   54,
+   25
+  ]
+ },
+ "pdp.raghavendra-swamy": {
+  "h1": "Guru Raghavendra Swamy",
+  "vendorText": "SPARKY 3D CRAFT CO",
+  "buyItNowVisible": [
+   "Buy it now"
+  ],
+  "paymentButtonHTMLLen": 923,
+  "addBtn": "Add to cart",
+  "addBtnDisabled": false,
+  "ymqVisibleText": [],
+  "mediaItems": 4,
+  "mediaTypes": [
+   "image",
+   "video",
+   "video",
+   "image"
+  ],
+  "thumbnails": 0,
+  "zoom": "has zoom/modal icon",
+  "pickup": "",
+  "tax": "Taxes included.",
+  "infoText": "SPARKY 3D CRAFT CO\n\nGuru Raghavendra Swamy\nRegular price\nRs. 1,200.00 INR \nSale price\nRs. 999.00 INRSale\nTaxes included.\nQuantity\nQuantity\nDecrease quantity for Guru Raghavendra Swamy\nIncrease quantity for Guru Raghavendra Swamy\nAdd to cart\nBuy it now\n\nDelivery Takes 8-10 Days Due To High Demand.\n\nThey say Guru Raghavendra Swamy never abandons those who call upon him with pure intent. Sometimes, just pausing to look at his idol is enough to reset a heavy day and remind us that a higher cosmic logic is always at play.\n\n​📬 Forward this to someone who needs Rayaru’s blessings and strength today."
+ },
+ "coll.all": {
+  "sort": "title-ascending / Alphabetically, A-Z",
+  "options": [
+   "manual",
+   "most-relevant",
+   "best-selling",
+   "title-ascending",
+   "title-descending",
+   "price-ascending",
+   "price-descending",
+   "created-ascending",
+   "created-descending"
+  ],
+  "filters": [
+   "Availability",
+   "Price"
+  ],
+  "grid": "none"
+ },
+ "coll.customized-gifts": {
+  "sort": "most-relevant / Most relevant",
+  "options": [
+   "manual",
+   "most-relevant",
+   "best-selling",
+   "title-ascending",
+   "title-descending",
+   "price-ascending",
+   "price-descending",
+   "created-ascending",
+   "created-descending"
+  ],
+  "filters": [
+   "Availability",
+   "Price"
+  ],
+  "grid": "none"
+ },
+ "coll.customized-idols": {
+  "sort": "most-relevant / Most relevant",
+  "options": [
+   "manual",
+   "most-relevant",
+   "best-selling",
+   "title-ascending",
+   "title-descending",
+   "price-ascending",
+   "price-descending",
+   "created-ascending",
+   "created-descending"
+  ],
+  "filters": [
+   "Availability",
+   "Price"
+  ],
+  "grid": "none"
+ },
+ "contactForm": [
+  {
+   "name": "form_type",
+   "type": "hidden",
+   "required": null,
+   "placeholder": ""
+  },
+  {
+   "name": "utf8",
+   "type": "hidden",
+   "required": null,
+   "placeholder": ""
+  },
+  {
+   "name": "contact[Name]",
+   "type": "text",
+   "required": null,
+   "placeholder": "Name",
+   "label": "Name"
+  },
+  {
+   "name": "contact[email]",
+   "type": "email",
+   "required": "true",
+   "placeholder": "Email",
+   "label": "Email *"
+  },
+  {
+   "name": "contact[Phone number]",
+   "type": "tel",
+   "required": null,
+   "placeholder": "Phone number",
+   "label": "Phone number"
+  },
+  {
+   "name": "contact[Comment]",
+   "type": "textarea",
+   "required": null,
+   "placeholder": "Comment",
+   "label": "Comment"
+  }
+ ],
+ "contactSend": {
+  "font-family": "\"Quattrocento Sans\", sans-serif",
+  "font-size": "15px",
+  "font-weight": "400",
+  "line-height": "18px",
+  "letter-spacing": "1px",
+  "color": "rgb(255, 255, 255)",
+  "background-color": "rgb(44, 51, 47)",
+  "text-transform": "none",
+  "border-radius": "7px",
+  "border": "0px none rgb(255, 255, 255)",
+  "padding": "0px 30px",
+  "min-height": "47px",
+  "box-shadow": "none",
+  "max-width": "none",
+  "_rect": [
+   122,
+   47
+  ]
+ },
+ "contactInput": {
+  "font-family": "\"Quattrocento Sans\", sans-serif",
+  "font-size": "16px",
+  "font-weight": "400",
+  "line-height": "24px",
+  "letter-spacing": "0.4px",
+  "color": "rgb(37, 37, 37)",
+  "background-color": "rgb(239, 236, 236)",
+  "text-transform": "none",
+  "border-radius": "6px",
+  "border": "0px none rgb(37, 37, 37)",
+  "padding": "15px",
+  "min-height": "2px",
+  "box-shadow": "none",
+  "max-width": "none",
+  "_rect": [
+   351,
+   45
+  ]
+ },
+ "cartText": "Your cart is empty\nContinue shopping\nHave an account?\n\nLog in to check out faster.",
+ "cartCheckoutBtn": {
+  "font-family": "\"Quattrocento Sans\", sans-serif",
+  "font-size": "15px",
+  "font-weight": "400",
+  "line-height": "18px",
+  "letter-spacing": "1px",
+  "color": "rgb(255, 255, 255)",
+  "background-color": "rgb(44, 51, 47)",
+  "text-transform": "none",
+  "border-radius": "7px",
+  "border": "0px none rgb(255, 255, 255)",
+  "padding": "0px 30px",
+  "min-height": "47px",
+  "box-shadow": "none",
+  "max-width": "360px",
+  "_rect": [
+   0,
+   0
+  ]
+ },
+ "mobile": {
+  "body": "15px",
+  "logo": [
+   100,
+   67
+  ],
+  "featuredCols": "none"
+ },
+ "mobilePdp": {
+  "counter": "1\n/\nof\n8",
+  "buttons": 2
+ }
+}

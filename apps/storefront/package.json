@@ -1,0 +1,40 @@
+{
+  "name": "@sparky/storefront",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Sparky 3D Craft Co — Next.js storefront on Medusa v2",
+  "license": "UNLICENSED",
+  "scripts": {
+    "dev": "next dev -p 3000",
+    "build": "next build",
+    "start": "next start -p ${PORT:-3000} -H ${HOSTNAME:-127.0.0.1}",
+    "typecheck": "tsc --noEmit",
+    "lint": "eslint .",
+    "test:e2e": "playwright test"
+  },
+  "dependencies": {
+    "@fontsource/quattrocento-sans": "5.3.0",
+    "@fontsource/trirong": "5.3.0",
+    "@medusajs/js-sdk": "2.21.1",
+    "next": "16.3.6",
+    "react": "19.3.0",
+    "react-dom": "19.3.0",
+    "sanitize-html": "2.17.7",
+    "server-only": "0.0.1",
+    "sharp": "0.35.4"
+  },
+  "devDependencies": {
+    "@medusajs/types": "2.21.1",
+    "@playwright/test": "1.63.0",
+    "@types/node": "^22.10.0",
+    "@types/react": "19.3.0",
+    "@types/react-dom": "19.3.0",
+    "@types/sanitize-html": "2.16.1",
+    "eslint": "10.11.0",
+    "eslint-config-next": "16.3.6",
+    "typescript": "5.9.3"
+  },
+  "engines": {
+    "node": ">=22.12.0"
+  }
+}

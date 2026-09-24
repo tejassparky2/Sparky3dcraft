@@ -1,0 +1,14 @@
+{
+  "_comment": "TEST FIXTURE ONLY. Shipping amounts here are arbitrary test values, not business rates.",
+  "store_name": "Sparky 3D Craft Co",
+  "currency_code": "inr",
+  "country_code": "in",
+  "prices_include_tax": true,
+  "sales_channel_name": "Sparky Storefront",
+  "region_name": "India",
+  "tax": { "default_rate": null },
+  "stock_location": { "name": "Sparky Warehouse", "address": { "city": "Test City", "country_code": "IN" } },
+  "shipping_options": [
+    { "code": "standard", "name": "Standard Shipping", "description": "TEST", "amount": 79, "free_shipping_threshold": 999 }
+  ]
+}

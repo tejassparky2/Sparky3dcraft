@@ -1,0 +1,44 @@
+path	final_status	redirect_count	final_url	bytes	first_hop
+/	200	0	https://sparky3dcraft.tech/	117369	first:200 
+/collections	200	0	https://sparky3dcraft.tech/collections	88970	first:200 
+/collections/all	200	0	https://sparky3dcraft.tech/collections/all	173308	first:200 
+/collections/customized-gifts	200	0	https://sparky3dcraft.tech/collections/customized-gifts	126839	first:200 
+/collections/customized-idols	200	0	https://sparky3dcraft.tech/collections/customized-idols	140008	first:200 
+/products/rayara-ring-special-offer	200	0	https://sparky3dcraft.tech/products/rayara-ring-special-offer	190178	first:200 
+/products/rayaru-with-brundavana	200	0	https://sparky3dcraft.tech/products/rayaru-with-brundavana	184170	first:200 
+/products/rayara-mantrakshate-ring	200	0	https://sparky3dcraft.tech/products/rayara-mantrakshate-ring	193347	first:200 
+/products/krishna-rayaru	200	0	https://sparky3dcraft.tech/products/krishna-rayaru	191242	first:200 
+/products/vene-rayaru	200	0	https://sparky3dcraft.tech/products/vene-rayaru	215758	first:200 
+/products/raghavendra-swamy	200	0	https://sparky3dcraft.tech/products/raghavendra-swamy	214705	first:200 
+/products/shiva-shadow-lamp	200	0	https://sparky3dcraft.tech/products/shiva-shadow-lamp	209234	first:200 
+/products/cute-little-bene-krishna	200	0	https://sparky3dcraft.tech/products/cute-little-bene-krishna	204678	first:200 
+/products/customized-lithophane-lamp	200	0	https://sparky3dcraft.tech/products/customized-lithophane-lamp	238117	first:200 
+/pages/contact	200	0	https://sparky3dcraft.tech/pages/contact	84855	first:200 
+/pages/about	404	0	https://sparky3dcraft.tech/pages/about	81285	first:404 
+/pages/about-us	404	0	https://sparky3dcraft.tech/pages/about-us	81285	first:404 
+/pages/faq	404	0	https://sparky3dcraft.tech/pages/faq	81285	first:404 
+/pages/shipping	404	0	https://sparky3dcraft.tech/pages/shipping	81285	first:404 
+/blogs/news	200	0	https://sparky3dcraft.tech/blogs/news	82224	first:200 
+/policies/privacy-policy	200	0	https://sparky3dcraft.tech/policies/privacy-policy	98303	first:200 
+/policies/refund-policy	404	0	https://sparky3dcraft.tech/policies/refund-policy	81285	first:404 
+/policies/shipping-policy	404	0	https://sparky3dcraft.tech/policies/shipping-policy	81285	first:404 
+/policies/terms-of-service	404	0	https://sparky3dcraft.tech/policies/terms-of-service	81285	first:404 
+/policies/contact-information	404	0	https://sparky3dcraft.tech/policies/contact-information	81285	first:404 
+/policies/legal-notice	404	0	https://sparky3dcraft.tech/policies/legal-notice	81285	first:404 
+/policies/subscription-policy	404	0	https://sparky3dcraft.tech/policies/subscription-policy	81285	first:404 
+/search	200	0	https://sparky3dcraft.tech/search	86018	first:200 
+/search?q=krishna	200	0	https://sparky3dcraft.tech/search?q=krishna	149053	first:200 
+/cart	200	0	https://sparky3dcraft.tech/cart	86093	first:200 
+/account	406	1	https://shopify.com/60736798784/account?locale=en&buyer_flags=eyJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJxbXB5MTAtdW4ubXlzaG9waWZ5LmNvbSIsImZsYWdzIjpbXSwiZXhwIjoxNzkwODY2ODU2LCJuYmYiOjE3OTAyNjIwNTZ9.icw6P0LZHdY6F1_1jYcRlORCmstlV9OOl2hVb5msTlM	14	first:302 https://shopify.com/60736798784/account?locale=en&buyer_flags=eyJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJxbXB5MTAtdW4ubXlzaG9waWZ5LmNvbSIsImZsYWdzIjpbXSwiZXhwIjoxNzkwODY2ODU3LCJuYmYiOjE3OTAyNjIwNTd9.eITPKd_MhmsnsQmztZQ5Bx55P5JUMfOHY8epeplBcJc
+/account/login	406	1	https://shopify.com/60736798784/account?locale=en&buyer_flags=eyJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJxbXB5MTAtdW4ubXlzaG9waWZ5LmNvbSIsImZsYWdzIjpbXSwiZXhwIjoxNzkwODY2ODU4LCJuYmYiOjE3OTAyNjIwNTh9.ZeTINY7QNgiXbNzbaobyGG8RW1H4--6izKxlt2DqQEA	14	first:302 https://shopify.com/60736798784/account?locale=en&buyer_flags=eyJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJxbXB5MTAtdW4ubXlzaG9waWZ5LmNvbSIsImZsYWdzIjpbXSwiZXhwIjoxNzkwODY2ODU5LCJuYmYiOjE3OTAyNjIwNTl9.Qrk_TQpiRoyKVz78Q8KCvL11VWaDdlHjq7Th13_m1bw
+/account/register	406	1	https://shopify.com/60736798784/account?locale=en&buyer_flags=eyJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJxbXB5MTAtdW4ubXlzaG9waWZ5LmNvbSIsImZsYWdzIjpbXSwiZXhwIjoxNzkwODY2ODU5LCJuYmYiOjE3OTAyNjIwNTl9.Qrk_TQpiRoyKVz78Q8KCvL11VWaDdlHjq7Th13_m1bw	14	first:302 https://shopify.com/60736798784/account?locale=en&buyer_flags=eyJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJxbXB5MTAtdW4ubXlzaG9waWZ5LmNvbSIsImZsYWdzIjpbXSwiZXhwIjoxNzkwODY2ODYwLCJuYmYiOjE3OTAyNjIwNjB9.hBpeMWT8NJNI_odAp7TzrXcwH9NyfPIqvzX51zzOK8o
+/this-page-does-not-exist-audit-404	404	0	https://sparky3dcraft.tech/this-page-does-not-exist-audit-404	81285	first:404 
+/products/does-not-exist-404	404	0	https://sparky3dcraft.tech/products/does-not-exist-404	81285	first:404 
+/collections/does-not-exist-404	404	0	https://sparky3dcraft.tech/collections/does-not-exist-404	81285	first:404 
+/collections/frontpage	404	0	https://sparky3dcraft.tech/collections/frontpage	81285	first:404 
+/checkout	200	5	https://sparky3dcraft.tech/	117369	first:302 https://sparky3dcraft.tech/checkouts/cn/hWNHCnpsluQsjurB0GhzF9zW/en-in?_r=AQAB7fskMQrdz8v0TYLdu2s2jMgJGK0EkRo0OWFsl3eD
+/agents.md	200	0	https://sparky3dcraft.tech/agents.md	4272	first:200 
+/.well-known/ucp	200	0	https://sparky3dcraft.tech/.well-known/ucp	4317	first:200 
+/sitemap.xml	200	0	https://sparky3dcraft.tech/sitemap.xml	888	first:200 
+/robots.txt	200	0	https://sparky3dcraft.tech/robots.txt	3640	first:200 
+/cart.js	200	0	https://sparky3dcraft.tech/cart.js	303	first:200 

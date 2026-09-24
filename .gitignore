@@ -1,0 +1,22 @@
+# dependencies / builds
+node_modules/
+.medusa/
+.next/
+*.tsbuildinfo
+# secrets — NEVER commit
+.env
+.env.*
+!.env.example
+!**/.env.example
+*.pem
+*.key
+# runtime data
+apps/backend/static/
+apps/backend/private-uploads/
+apps/backend/uploads/
+apps/backend/migration-snapshots/
+# test output
+test-results/
+playwright-report/
+coverage/
+.DS_Store

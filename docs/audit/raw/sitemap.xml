@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<sitemapindex xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+  <!-- This is the parent sitemap linking to additional sitemaps for products, collections and pages as shown below. The sitemap can not be edited manually, but is kept up to date in real time. -->
+  <sitemap>
+    <loc>https://sparky3dcraft.tech/sitemap_agentic_discovery.xml</loc>
+  </sitemap>
+  <sitemap>
+    <loc>https://sparky3dcraft.tech/sitemap_products_1.xml?from=7258829520960&amp;to=7291769716800</loc>
+  </sitemap>
+  <sitemap>
+    <loc>https://sparky3dcraft.tech/sitemap_pages_1.xml?from=95702646848&amp;to=95702646848</loc>
+  </sitemap>
+  <sitemap>
+    <loc>https://sparky3dcraft.tech/sitemap_collections_1.xml?from=284857729088&amp;to=284857991232</loc>
+  </sitemap>
+  <sitemap>
+    <loc>https://sparky3dcraft.tech/sitemap_blogs_1.xml</loc>
+  </sitemap>
+</sitemapindex>

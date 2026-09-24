@@ -1,0 +1,23 @@
+{
+  "_comment": "Merchant-supplied store settings. Every value marked REQUIRED-MERCHANT must be confirmed by the business owner; deploy/install.sh fills this interactively. Amounts are in major units (rupees).",
+  "store_name": "Sparky 3D Craft Co",
+  "currency_code": "inr",
+  "country_code": "in",
+  "prices_include_tax": true,
+  "sales_channel_name": "Sparky Storefront",
+  "region_name": "India",
+  "tax": { "default_rate": null },
+  "stock_location": {
+    "name": "Sparky Warehouse",
+    "address": { "address_1": "", "city": "", "province": "", "postal_code": "", "country_code": "IN" }
+  },
+  "shipping_options": [
+    {
+      "code": "standard",
+      "name": "Standard Shipping",
+      "description": "",
+      "amount": -1,
+      "free_shipping_threshold": null
+    }
+  ]
+}

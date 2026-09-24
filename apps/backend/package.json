@@ -1,0 +1,53 @@
+{
+  "name": "@sparky/backend",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Sparky 3D Craft Co \u2014 Medusa v2 commerce backend",
+  "license": "UNLICENSED",
+  "scripts": {
+    "build": "medusa build",
+    "start": "medusa start",
+    "dev": "medusa develop",
+    "typecheck": "tsc --noEmit -p tsconfig.json && tsc --noEmit -p src/admin/tsconfig.json",
+    "db:migrate": "medusa db:migrate",
+    "setup:store": "medusa exec ./src/scripts/setup-store.ts",
+    "import:shopify": "medusa exec ./src/scripts/import-shopify.ts",
+    "verify:catalog": "medusa exec ./src/scripts/verify-catalog.ts",
+    "test:unit": "TEST_TYPE=unit NODE_OPTIONS=--experimental-vm-modules jest --silent=false --runInBand --forceExit",
+    "test:integration:http": "TEST_TYPE=integration:http NODE_OPTIONS=--experimental-vm-modules jest --silent=false --runInBand --forceExit",
+    "test:integration:modules": "TEST_TYPE=integration:modules NODE_OPTIONS=--experimental-vm-modules jest --silent=false --runInBand --forceExit",
+    "apply:personalization": "medusa exec ./src/scripts/apply-personalization.ts"
+  },
+  "dependencies": {
+    "@aws-sdk/client-s3": "3.1139.0",
+    "@medusajs/admin-sdk": "2.21.1",
+    "@medusajs/cli": "2.21.1",
+    "@medusajs/framework": "2.21.1",
+    "@medusajs/icons": "2.21.1",
+    "@medusajs/js-sdk": "2.21.1",
+    "@medusajs/medusa": "2.21.1",
+    "@medusajs/ui": "4.2.5",
+    "nodemailer": "^10.0.10"
+  },
+  "devDependencies": {
+    "@medusajs/test-utils": "2.21.1",
+    "@swc/core": "1.16.2",
+    "@swc/jest": "^0.2.36",
+    "@types/jest": "^29.5.13",
+    "@types/node": "^22.10.0",
+    "@types/nodemailer": "^8.0.2",
+    "@types/react": "^18.3.2",
+    "@types/react-dom": "^18.2.25",
+    "jest": "^29.7.0",
+    "prop-types": "^15.8.1",
+    "react": "^18.3.1",
+    "react-dom": "^18.3.1",
+    "ts-node": "^10.9.2",
+    "typescript": "5.9.3",
+    "vite": "^5.4.14",
+    "yalc": "^1.0.0-pre.53"
+  },
+  "engines": {
+    "node": ">=22.12.0"
+  }
+}

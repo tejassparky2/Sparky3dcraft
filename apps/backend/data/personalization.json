@@ -1,0 +1,12 @@
+{
+  "_source": "Observed on the live Shopify product page (King Product Options app) during the 2026-09-24 audit — docs/audit/LIVE-SITE-AUDIT.md §5.2. Applied once by src/scripts/apply-personalization.ts; afterwards managed in Medusa Admin → Product → Metadata.",
+  "products": {
+    "customized-lithophane-lamp": {
+      "personalization_photo": "required",
+      "personalization_photo_label": "Upload Your Custom Photo",
+      "personalization_choice_name": "Color",
+      "personalization_choice_values": "BLACK:#000000,GOLD:#d4af37,BROWN:#8b4513,WHITE:#f5f5f5",
+      "personalization_choice_required": "true"
+    }
+  }
+}
