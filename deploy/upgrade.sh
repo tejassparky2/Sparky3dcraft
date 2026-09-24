@@ -75,8 +75,14 @@ pass "new release built and tested: $RELEASE_DIR"
 rollback_now() {
   fail "upgrade failed after switching — rolling back to $PREV_RELEASE"
   ln -sfn "$PREV_RELEASE" "$SPARKY_HOME/.current.tmp" && mv -T "$SPARKY_HOME/.current.tmp" "$SPARKY_CURRENT"
+  trap - ERR
   systemctl restart sparky-medusa-server sparky-medusa-worker sparky-storefront || true
-  fail "code rolled back. If migrations changed the schema incompatibly: sudo $DEPLOY_DIR/rollback.sh --restore-db $PRE_BACKUP"
+  if wait_http http://127.0.0.1:9000/health 90 && wait_http http://127.0.0.1:3000/robots.txt 60; then
+    pass "previous release is serving again: $PREV_RELEASE"
+  else
+    fail "previous release did NOT come back healthy — run: sudo $REPO_DIR/deploy/healthcheck.sh"
+  fi
+  fail "code rolled back. If migrations changed the schema incompatibly: sudo $REPO_DIR/deploy/rollback.sh --restore-db $PRE_BACKUP"
   exit 1
 }
 
