@@ -30,7 +30,7 @@
   - the DB password is weak
   - CORS contains `*`
   - Redis is missing
-  - a test-only override is set (`RAZORPAY_API_BASE`, `SMTP_INSECURE_NO_TLS`, `SHOPIFY_ADMIN_API_BASE_TEST_ONLY`)
+  - a test-only override is set (`RAZORPAY_API_BASE`, `SMTP_INSECURE_NO_TLS`). The Shopify importer separately refuses `SHOPIFY_ADMIN_API_BASE_TEST_ONLY` in production
 - Env files are parsed as data (`load_env_file`), never `source`d, so a value can't execute code.
 - Nothing logs secrets:
   - Shopify tokens are never logged.

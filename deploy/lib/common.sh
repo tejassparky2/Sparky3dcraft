@@ -62,19 +62,21 @@ run() {
 
 # Error trap: explains where it failed and whether a re-run is safe.
 on_error() {
-  local code=$? line=${1:-?}
+  local code=$? line=${1:-?} tail_lines=""
   # subshells inherit the ERR trap (set -E); report once, from the main shell
   if [ "${BASH_SUBSHELL:-0}" -gt 0 ]; then exit "$code"; fi
+  # capture the log tail BEFORE our own failure lines are appended to it
+  if [ -f "${SPARKY_LOG:-}" ]; then tail_lines=$(grep -v '\[FAIL\]' "$SPARKY_LOG" 2>/dev/null | tail -n 20 || true); fi
   exec 1>&3 2>&4
   fail "stage: ${CURRENT_STAGE}"
   fail "command: ${CURRENT_CMD:-<see log>} (line ${line}, exit ${code})"
-  if [ -f "$SPARKY_LOG" ]; then
+  if [ -n "$tail_lines" ]; then
     fail "last log lines:"
-    tail -n 15 "$SPARKY_LOG" 2>/dev/null | sed 's/^/        /' >&2 || true
+    printf '%s\n' "$tail_lines" | sed 's/^/        /' >&2
   fi
   fail "likely cause: $(likely_cause "$CURRENT_STAGE")"
-  fail "diagnose:  sudo $DEPLOY_DIR/diagnose.sh   (full log: $SPARKY_LOG)"
-  fail "re-run is safe: completed stages are skipped and every stage is idempotent."
+  fail "diagnose:  sudo ${SPARKY_DIAGNOSE:-$DEPLOY_DIR/diagnose.sh}   (full log: $SPARKY_LOG)"
+  fail "${SPARKY_RERUN_HINT:-re-run is safe: completed stages are skipped and every stage is idempotent.}"
   exit "$code"
 }
 
@@ -92,6 +94,9 @@ likely_cause() {
     nginx) echo "nginx config test failed or another service uses port 80/443" ;;
     tls) echo "DNS does not point at this server yet, or ports 80/443 are closed in OCI security lists" ;;
     tests) echo "a health or smoke check failed — see the check output above" ;;
+    build) echo "the new release failed to install/build/test (npm, TypeScript, unit tests, next build) — see the log lines above" ;;
+    migrate) echo "a database migration failed — the database is unchanged if Medusa rolled it back; check the log" ;;
+    backup) echo "pg_dump/tar/upload failed — disk space, database access or S3 credentials" ;;
     *) echo "see the log" ;;
   esac
 }

@@ -46,6 +46,20 @@ if (env("S3_PRIVATE_BUCKET")) {
     const t = await r.Body.transformToString()
     if (t !== body) throw new Error("content mismatch")
   })
+  await step("private object is NOT readable anonymously", async () => {
+    // Customer photos must never be public. Try the anonymous URL forms a
+    // misconfigured bucket would serve: path-style endpoint, and (OCI) the
+    // public-URL pattern with the private bucket name swapped in.
+    const pub = env("S3_BUCKET"), priv = env("S3_PRIVATE_BUCKET")
+    const urls = [`${env("S3_ENDPOINT").replace(/\/$/, "")}/${priv}/${pkey}`]
+    const fileUrl = env("S3_FILE_URL").replace(/\/$/, "")
+    if (fileUrl.includes(`/b/${pub}/`)) urls.push(`${fileUrl.replace(`/b/${pub}/`, `/b/${priv}/`)}/${pkey}`)
+    else if (fileUrl.endsWith(`/${pub}`)) urls.push(`${fileUrl.slice(0, -pub.length)}${priv}/${pkey}`)
+    for (const u of urls) {
+      const res = await fetch(u, { signal: AbortSignal.timeout(15000) }).catch(() => undefined)
+      if (res?.ok) throw new Error(`private bucket object is publicly readable at ${new URL(u).origin} — make bucket ${priv} private`)
+    }
+  })
   await step("delete private object", () => client.send(new DeleteObjectCommand({ Bucket: env("S3_PRIVATE_BUCKET"), Key: pkey })))
 }
 process.exit(failed ? 1 : 0)

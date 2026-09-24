@@ -52,23 +52,21 @@ through its S3-compatible API.
 
 ## Key design decisions (ADRs in `docs/research/decisions/`)
 
-- **Native systemd, not Docker** (ADR-001). One VM, and every package has an arm64 build. Using
-  systemd means one fewer layer and less memory.
-- **Server + worker split** (ADR-002), with all infrastructure modules backed by Redis (event bus,
-  workflow engine, locking, cache). In production no module falls back to in-memory.
-- **Custom Razorpay provider** (ADR-003). The community packages had disqualifying bugs
-  (`docs/research/external/razorpay.md`).
-- **OCI Object Storage via the S3 API** (ADR-004), with `forcePathStyle`, no ACLs and
-  `WHEN_REQUIRED` checksums.
-- **Postgres ILIKE search via `q`** (ADR-005). The catalog is small, so no external search engine is needed.
-- **Shopify collections → Medusa product categories** (ADR-006). The Store API exposes
-  categories with handles, and the storefront keeps `/collections/<handle>` URLs.
-- **Compare-at prices → base price + a "sale" price list** (ADR-007). The storefront then shows
-  the struck-through price exactly as Shopify does.
-- **Personalization as product metadata + validated line-item metadata** (ADR-008). Photos go to
-  private storage.
-- **Admin on the API domain** (`https://api.<domain>/app`) (ADR-009).
-- **Source-ID mapping for migration** (ADR-010). Re-runs are idempotent, and methods are never mixed without mapping.
+| ADR | Decision |
+|---|---|
+| 001 | Native packages + systemd on the VM, not Docker |
+| 002 | Pinned versions: Medusa 2.21.1, Next.js 16.3.6, Node 22 LTS, PostgreSQL 16, Redis 7 |
+| 003 | Custom Razorpay provider (community packages had disqualifying bugs) |
+| 004 | Server/worker split, and every infrastructure module Redis-backed: event bus, workflow engine, locking, cache. No in-memory fallback in production |
+| 005 | OCI Object Storage via the S3 API (`forcePathStyle`, no ACLs, `WHEN_REQUIRED` checksums) |
+| 006 | Search via Medusa `q` (Postgres ILIKE). The catalog is tiny, so there is no search engine |
+| 007 | Shopify collections → Medusa product categories, keeping `/collections/<handle>` |
+| 008 | Compare-at → base price + "sale" price list, so struck-through prices match Shopify |
+| 009 | Personalization as product metadata + server-validated line-item metadata, with photos in private storage |
+| 010 | Admin on the API domain (`https://api.<domain>/app`) |
+| 011 | Migration with a source-ID mapping table. Idempotent, and methods are never mixed without mapping |
+| 012 | COD authorizes at order time and is captured when the cash is collected |
+| 013 | Storefront written for Next 16 (not a port of the Next-15 Medusa starter) |
 
 ## Request paths
 

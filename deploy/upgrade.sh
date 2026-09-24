@@ -23,6 +23,9 @@ fi
 . "$DEPLOY_DIR/lib/common.sh"
 require_root
 export REPO_DIR
+SPARKY_DIAGNOSE="$REPO_DIR/deploy/diagnose.sh"
+SPARKY_RERUN_HINT="nothing was switched unless a rollback message says otherwise; the site keeps serving $(readlink -f "$SPARKY_CURRENT"). Fix the cause and re-run."
+trap 'rm -rf "${SPARKY_UPGRADE_FROZEN:?}"' EXIT
 REF="" CONFIRM_MEDUSA=0
 while [ $# -gt 0 ]; do
   case "$1" in
@@ -99,5 +102,4 @@ list_releases | tail -n +6 | while read -r old; do
   case "$SPARKY_RELEASES/$old" in "$(readlink -f "$SPARKY_CURRENT")" | "$PREV_RELEASE") continue ;; esac
   rm -rf "${SPARKY_RELEASES:?}/$old"
 done
-rm -rf "${SPARKY_UPGRADE_FROZEN:?}"
 pass "upgrade to $REF complete (previous release kept for rollback: $PREV_RELEASE)"
