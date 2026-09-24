@@ -83,6 +83,6 @@ Never run `npm update`, `npx medusa upgrade` or `npm audit fix --force` on the s
 
 ## Capacity notes (A1, 2 OCPU / 12 GB)
 
-- An upgrade build takes about 7 minutes (measured on the x86 test container). The site keeps serving throughout. Medusa is stopped only for the migration and restart, typically under a minute, and the storefront keeps rendering cached pages meanwhile.
+- Upgrade timings, measured on the x86 test container: about 7 minutes of building and testing while the old release keeps serving, then **42 s** from stopping Medusa (migrations, switch, restart) to a passing health check. Polling the home and a product page every second through a full upgrade (349 samples) returned HTTP 200 every time. Expect somewhat longer builds on 2 A1 cores.
 - OCI Always Free Object Storage includes **50,000 API requests/month**. The storefront serves product images through Next.js image optimization, which caches each size locally (`minimumCacheTTL` 7 days), so bucket GETs are only cache misses. If traffic grows, watch the OCI usage page (RISKS.md R-06).
 - OCI reclaims *idle* Always Free instances (below 20 % CPU/network/memory over 7 days). A shop with real traffic plus Medusa's memory use stays above that, but check the OCI console notices.

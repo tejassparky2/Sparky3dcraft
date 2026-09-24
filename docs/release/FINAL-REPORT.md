@@ -40,7 +40,7 @@ and 0 MANUAL. That is the only acceptable source of a YES.
 | Reboot recovery | `--prepare-reboot-test`, container restart, re-run | all services back, gate PASS |
 | Backup / restore | `backup.sh`, `restore.sh --verify-latest`, production restore with DB swap, `--fetch-remote` | pass. The remote copy decrypts byte-identical |
 | Upgrade / rollback | `upgrade.sh --ref <new commit>`, `rollback.sh --previous`, `--to`, incomplete-release refusal | pass. The migration-set comparison avoided a false alarm |
-| Upgrade failure paths | UPGRADE_SCENARIOS_PLACEHOLDER | |
+| Upgrade failure paths | Deliberately broken commits: (1) TypeScript error, (2) runtime error after the switch | (1) nothing switched, shop 200 throughout; (2) automatic rollback, previous release verified healthy, shop 200 |
 | Private media | `s3-check.mjs`: public bucket anonymously readable, private bucket **not**. The negative test makes the bucket public and the check fails | pass |
 | Security checks | secret scans (no credentials in git), `npm audit` triage (storefront 0; backend lodash fixed by override; vite dev-server advisory not applicable), env validation refuses weak production config, hook guards tested | see docs/SECURITY.md |
 

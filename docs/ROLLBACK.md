@@ -57,5 +57,9 @@ In the Ubuntu 24.04 test container:
 - rolling forward with `--to`
 - a production DB restore with swap
 
-The automatic rollback inside `upgrade.sh` was **not** triggered by a real failure in testing.
-Its logic is simple (switch the symlink back and restart) but it is unexercised.
+Failure injection on 2026-09-24, with throwaway commits in a test clone:
+- **Build failure** (TypeScript error in the storefront): `upgrade.sh` stopped before switching. The
+  active release was unchanged and the shop served HTTP 200 throughout.
+- **Runtime failure after the switch** (a route that throws, which passes `next build`): `upgrade.sh`
+  detected the unhealthy storefront, switched back automatically, and waited until the previous release was
+  healthy ("previous release is serving again"). The shop returned HTTP 200 immediately afterwards.
