@@ -252,10 +252,27 @@ db_parse() {
 
 pg_env() { PGPASSWORD="$DB_PASS" "$@"; }
 
+# Releases are named <UTC timestamp>-<sha>; newest first by name (mtime is not reliable).
+list_releases() { find "$SPARKY_RELEASES" -mindepth 1 -maxdepth 1 -type d -printf '%f\n' 2>/dev/null | sort -r; }
+# A release can be switched to only when both apps were fully built.
+release_complete() {
+  [ -d "$1/apps/backend/.medusa/server/node_modules" ] && [ -f "$1/apps/storefront/.next/BUILD_ID" ]
+}
+
+# Numbered migration files shipped with a release (Medusa core modules + ours).
+migration_manifest() {
+  (cd "$1/apps/backend/.medusa/server" 2>/dev/null && find . -path '*/migrations/*' -name 'Migration[0-9]*.js' | sort) || true
+}
+# Record which release (and which migration set) the database was migrated to.
+record_migrated() {
+  basename "$1" >"$SPARKY_STATE_DIR/migrated-release"
+  migration_manifest "$1" >"$SPARKY_STATE_DIR/migrated-manifest"
+}
+
 wait_http() {
   local url=$1 tries=${2:-60}
   for _ in $(seq 1 "$tries"); do
-    if curl -fsS -o /dev/null --max-time 5 "$url"; then return 0; fi
+    if curl -fs -o /dev/null --max-time 5 "$url" 2>/dev/null; then return 0; fi
     sleep 2
   done
   return 1

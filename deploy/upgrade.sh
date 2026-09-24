@@ -81,8 +81,9 @@ wait_http http://127.0.0.1:3000/robots.txt 60 || rollback_now
 CURRENT_STAGE=verify
 "$DEPLOY_DIR/healthcheck.sh" || rollback_now
 trap - ERR
-# keep the 5 newest releases
-ls -1dt "$SPARKY_RELEASES"/*/ | tail -n +6 | while read -r old; do
-  [ "$(readlink -f "$old")" = "$(readlink -f "$SPARKY_CURRENT")" ] || rm -rf "$old"
+# keep the 5 newest releases (never the active or the previous one)
+list_releases | tail -n +6 | while read -r old; do
+  case "$SPARKY_RELEASES/$old" in "$(readlink -f "$SPARKY_CURRENT")" | "$PREV_RELEASE") continue ;; esac
+  rm -rf "${SPARKY_RELEASES:?}/$old"
 done
 pass "upgrade to $REF complete (previous release kept for rollback: $PREV_RELEASE)"

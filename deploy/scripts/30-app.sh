@@ -180,7 +180,7 @@ run_migrations() {
   local srv=$1
   CURRENT_CMD="medusa db:migrate --execute-safe-links --execute-safe-search --all-or-nothing"
   medusa_exec "$srv" npx medusa db:migrate --execute-safe-links --execute-safe-search --all-or-nothing </dev/null >>"$SPARKY_LOG" 2>&1
-  basename "$(cd "$srv/../../../.." && pwd -P)" >"$SPARKY_STATE_DIR/migrated-release"
+  record_migrated "$(cd "$srv/../../../.." && pwd -P)"
   pass "database migrations applied (safe link/search sync only)"
 }
 

@@ -119,7 +119,21 @@ if curl -s -o /dev/null -w '%{http_code}' --max-time 10 http://127.0.0.1:9000/st
 section "DATABASE MIGRATIONS"
 cur=$(basename "$(readlink -f "$SPARKY_CURRENT")")
 mig=$(cat "$SPARKY_STATE_DIR/migrated-release" 2>/dev/null || echo none)
-[ "$cur" = "$mig" ] && ok "migrations applied for active release $cur" || bad "active release $cur but migrations last ran for $mig"
+if [ "$cur" = "$mig" ]; then
+  ok "migrations applied for active release $cur"
+elif [ -f "$SPARKY_STATE_DIR/migrated-manifest" ]; then
+  pending=$(comm -23 <(migration_manifest "$SPARKY_CURRENT") "$SPARKY_STATE_DIR/migrated-manifest" | wc -l)
+  ahead=$(comm -13 <(migration_manifest "$SPARKY_CURRENT") "$SPARKY_STATE_DIR/migrated-manifest" | wc -l)
+  if [ "$pending" -gt 0 ]; then
+    bad "active release $cur has $pending migration(s) not applied (last migrated by $mig) — run migrations"
+  elif [ "$ahead" -gt 0 ]; then
+    meh "database has $ahead migration(s) newer than release $cur (rolled back code) — if errors appear: rollback.sh --restore-db <pre-upgrade backup>"
+  else
+    ok "migrations match active release $cur (same migration set as $mig)"
+  fi
+else
+  bad "active release $cur but migrations last ran for $mig"
+fi
 
 section "PRODUCTS"
 n=$(pg_env psql -h "$DB_HOST" -U "$DB_USER" -d "$DB_NAME" -tAc "select count(*) from product where status='published' and deleted_at is null" 2>/dev/null || echo 0)

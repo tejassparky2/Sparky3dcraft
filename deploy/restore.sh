@@ -42,7 +42,7 @@ done
 load_backend_env
 db_parse
 latest() { ls -1dt "$SPARKY_BACKUP_DIR"/2*Z-* 2>/dev/null | head -1; }
-psql_su() { sudo -u postgres psql -q -v ON_ERROR_STOP=1 "$@"; }
+psql_su() { sudo -u postgres PGOPTIONS='-c client_min_messages=warning' psql -q -v ON_ERROR_STOP=1 "$@"; }
 count_in() {
   pg_env psql -h "$DB_HOST" -p "$DB_PORT" -U "$DB_USER" -d "$1" -tAc "$2"
 }
@@ -78,6 +78,12 @@ case "$MODE" in
     d=$(latest)
     [ -n "$d" ] || die "no local backups in $SPARKY_BACKUP_DIR"
     tmpdb="sparky_restore_check_$$"
+    # drop the temporary database even when verification fails; clear leftovers of killed runs
+    trap 'sudo -u postgres psql -q -c "DROP DATABASE IF EXISTS \"$tmpdb\";" >/dev/null 2>&1 || true' EXIT
+    for stale in $(sudo -u postgres psql -tAc "SELECT datname FROM pg_database WHERE datname LIKE 'sparky\_restore\_check\_%'"); do
+      psql_su -c "DROP DATABASE IF EXISTS \"$stale\";"
+      info "dropped leftover temporary database $stale"
+    done
     verify_dump_into "$d" "$tmpdb"
     psql_su -c "DROP DATABASE IF EXISTS \"$tmpdb\";"
     date -u +%FT%TZ >"$SPARKY_STATE_DIR/last-restore-verify"
