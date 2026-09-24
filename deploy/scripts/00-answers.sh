@@ -60,6 +60,11 @@ collect_answers() {
     ask BACKUP_S3_BUCKET "Off-machine backup bucket (S3-compatible, private; empty = local only)" "" no
     ask BACKUP_RETENTION_DAYS "Local backup retention in days" "14"
   fi
+  if [ "$SPARKY_MODE" = production ]; then
+    # true once DNS points here: Medusa is then the source of truth and Shopify re-imports are refused
+    ask SPARKY_CUTOVER_COMPLETED "Is the cutover complete (DNS switched to this server)? (true/false)" "false"
+    case "$SPARKY_CUTOVER_COMPLETED" in true | false) ;; *) die "SPARKY_CUTOVER_COMPLETED must be true or false" ;; esac
+  fi
   if [ "$SPARKY_MODE" = production ] && [ "$FILE_PROVIDER" != s3 ]; then
     die "production mode requires FILE_PROVIDER=s3 (local media storage is staging-only)"
   fi

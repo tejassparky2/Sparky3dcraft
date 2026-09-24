@@ -216,8 +216,19 @@ for pol in privacy terms shipping refunds; do
   st=$(sed -n 's/^status: //p' "$SPARKY_CURRENT/apps/storefront/content/policies/$pol.md" | head -1)
   if [ "$st" = approved ]; then P "policy $pol approved"; elif [ "$MODE" = production ]; then F "policy $pol not approved by the merchant (status: $st)"; else M "policy $pol needs merchant-approved text (status: $st)"; fi
 done
-cd "$SPARKY_CURRENT/apps/backend" && npm audit --omit=dev --audit-level=high >/dev/null 2>&1 && P "npm audit (backend, high+): clean" || W "npm audit reports high/critical advisories in backend dependencies (review, do not auto-suppress)"
-cd "$SPARKY_CURRENT/apps/storefront" && npm audit --omit=dev --audit-level=high >/dev/null 2>&1 && P "npm audit (storefront, high+): clean" || W "npm audit reports high/critical advisories in storefront dependencies"
+audit_app() {
+  local app=$1 out hi
+  out=$(cd "$SPARKY_CURRENT/apps/$app" && npm audit --omit=dev --json 2>/dev/null || true)
+  if ! hi=$(echo "$out" | jq -er '(.metadata.vulnerabilities.high // 0) + (.metadata.vulnerabilities.critical // 0)' 2>/dev/null); then
+    W "npm audit ($app) could not run (registry unreachable?) — run it manually"
+  elif [ "$hi" = 0 ]; then
+    P "npm audit ($app, production deps): no high/critical advisories"
+  else
+    W "npm audit ($app): $hi high/critical advisories: $(echo "$out" | jq -r '[.vulnerabilities[] | select(.severity=="high" or .severity=="critical") | .name] | join(",")') — review (docs/SECURITY.md §Dependencies), do not auto-suppress"
+  fi
+}
+audit_app backend
+audit_app storefront
 
 H "BACKUP / RESTORE / RECOVERY"
 "$DEPLOY_DIR/backup.sh" --tag verification --quiet && P "backup created" || F "backup failed"

@@ -3,15 +3,26 @@
 #   sudo ./deploy/upgrade.sh --ref <tag|branch|sha> [--confirm-medusa-upgrade]
 #
 # git status clean → fetch → version check → BACKUP → build new release
-# (backend build, typecheck, unit tests) → stop Medusa → migrate → switch →
-# start → build storefront → restart → health check.  Failure after the
+# (backend build, typecheck, unit tests, storefront build — the old release
+# keeps serving meanwhile) → stop Medusa → migrate → switch → start →
+# restart storefront → health check.  Failure after the
 # switch rolls back to the previous release automatically; the pre-upgrade
 # backup is kept for a database restore (rollback.sh --restore-db).
 set -Eeuo pipefail
 DEPLOY_DIR=$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)
+# This script checks out another git ref in the repository it lives in. Bash
+# reads scripts lazily, so run from a frozen copy of deploy/ to never execute
+# a half-old, half-new script.
+if [ -z "${SPARKY_UPGRADE_FROZEN:-}" ]; then
+  [ "$(id -u)" = 0 ] || { echo "run as root (sudo)" >&2; exit 1; }
+  frozen=$(mktemp -d /tmp/sparky-upgrade.XXXXXX)
+  cp -a "$DEPLOY_DIR" "$frozen/deploy"
+  REPO_DIR=$(cd "$DEPLOY_DIR/.." && pwd) SPARKY_UPGRADE_FROZEN="$frozen" exec "$frozen/deploy/upgrade.sh" "$@"
+fi
 # shellcheck source=deploy/lib/common.sh
 . "$DEPLOY_DIR/lib/common.sh"
 require_root
+export REPO_DIR
 REF="" CONFIRM_MEDUSA=0
 while [ $# -gt 0 ]; do
   case "$1" in
@@ -53,6 +64,9 @@ new_release
 build_backend
 CURRENT_CMD="typecheck + unit tests"
 (cd "$RELEASE_DIR/apps/backend" && as_sparky npm run -s typecheck && as_sparky npm run -s test:unit) >>"$SPARKY_LOG" 2>&1 || die "typecheck/unit tests failed on $REF — nothing was switched"
+CURRENT_CMD="storefront build (old release keeps serving)"
+build_storefront "$RELEASE_DIR"
+release_complete "$RELEASE_DIR" || die "release $RELEASE_DIR is incomplete — nothing was switched"
 pass "new release built and tested: $RELEASE_DIR"
 
 rollback_now() {
@@ -74,7 +88,6 @@ wait_http http://127.0.0.1:9000/health 120 || rollback_now
 wait_http http://127.0.0.1:9001/health 120 || rollback_now
 
 CURRENT_STAGE=storefront
-build_storefront
 systemctl restart sparky-storefront
 wait_http http://127.0.0.1:3000/robots.txt 60 || rollback_now
 
@@ -86,4 +99,5 @@ list_releases | tail -n +6 | while read -r old; do
   case "$SPARKY_RELEASES/$old" in "$(readlink -f "$SPARKY_CURRENT")" | "$PREV_RELEASE") continue ;; esac
   rm -rf "${SPARKY_RELEASES:?}/$old"
 done
+rm -rf "${SPARKY_UPGRADE_FROZEN:?}"
 pass "upgrade to $REF complete (previous release kept for rollback: $PREV_RELEASE)"

@@ -2,7 +2,7 @@
   "name": "@sparky/backend",
   "version": "1.0.0",
   "private": true,
-  "description": "Sparky 3D Craft Co \u2014 Medusa v2 commerce backend",
+  "description": "Sparky 3D Craft Co — Medusa v2 commerce backend",
   "license": "UNLICENSED",
   "scripts": {
     "build": "medusa build",
@@ -12,7 +12,6 @@
     "db:migrate": "medusa db:migrate",
     "setup:store": "medusa exec ./src/scripts/setup-store.ts",
     "import:shopify": "medusa exec ./src/scripts/import-shopify.ts",
-    "verify:catalog": "medusa exec ./src/scripts/verify-catalog.ts",
     "test:unit": "TEST_TYPE=unit NODE_OPTIONS=--experimental-vm-modules jest --silent=false --runInBand --forceExit",
     "test:integration:http": "TEST_TYPE=integration:http NODE_OPTIONS=--experimental-vm-modules jest --silent=false --runInBand --forceExit",
     "test:integration:modules": "TEST_TYPE=integration:modules NODE_OPTIONS=--experimental-vm-modules jest --silent=false --runInBand --forceExit",
@@ -50,5 +49,8 @@
   },
   "engines": {
     "node": ">=22.12.0"
+  },
+  "overrides": {
+    "lodash": "4.18.1"
   }
 }

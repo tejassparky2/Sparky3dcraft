@@ -310,8 +310,9 @@ write_storefront_env() {
   if install_if_changed "$tmp" "$SPARKY_STOREFRONT_ENV" 0640 "root:$SPARKY_USER"; then pass "wrote $SPARKY_STOREFRONT_ENV"; else skip "$SPARKY_STOREFRONT_ENV unchanged"; fi
 }
 
+# build_storefront [release dir]   (default: the active release)
 build_storefront() {
-  local sf="$SPARKY_CURRENT/apps/storefront"
+  local sf="${1:-$SPARKY_CURRENT}/apps/storefront"
   CURRENT_CMD="npm ci (storefront)"
   (cd "$sf" && as_sparky env PLAYWRIGHT_SKIP_BROWSER_DOWNLOAD=1 npm ci --no-audit --no-fund) >>"$SPARKY_LOG" 2>&1
   CURRENT_CMD="next build"
@@ -325,7 +326,7 @@ build_storefront() {
 stage_storefront() {
   wait_http http://127.0.0.1:9000/health 30 || die "Medusa must be running to build the storefront"
   write_storefront_env
-  build_storefront
+  build_storefront "$SPARKY_CURRENT"
   install_units sparky-storefront.service
   run systemctl enable sparky-storefront
   run systemctl restart sparky-storefront

@@ -39,10 +39,8 @@ trap 'on_error $LINENO' ERR
 
 if [ -n "$ANSWERS" ]; then
   [ -f "$ANSWERS" ] || die "answers file not found: $ANSWERS"
-  set -a
-  # shellcheck disable=SC1090
-  . "$ANSWERS"
-  set +a
+  # KEY=value lines, parsed without shell evaluation (values may contain spaces/$)
+  load_env_file "$ANSWERS"
 fi
 if [ "$RESET" = 1 ]; then rm -f "$SPARKY_STATE_DIR"/*.done && info "installer state reset"; fi
 if [ -n "$MODE_ARG" ]; then export SPARKY_MODE=$MODE_ARG; fi
