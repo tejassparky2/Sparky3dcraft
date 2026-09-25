@@ -39,7 +39,8 @@ stage_nginx() {
   rm -f /etc/nginx/sites-enabled/default
   write_site_config
   CURRENT_CMD="nginx -t"
-  nginx -t >>"$SPARKY_LOG" 2>&1 || die "nginx configuration test failed (nginx -t)"
+  local nt
+  nt=$(nginx -t 2>&1) || { printf '%s\n' "$nt" | sed 's/^/        /' >&2; die "nginx configuration test failed (nginx -t)"; }
   run systemctl enable nginx
   run systemctl reload-or-restart nginx
   pass "nginx configured and reloaded (config test passed)"
@@ -55,9 +56,10 @@ strip_ipv6_if_unsupported() {
 CERT_NAME=${CERT_NAME:-sparky}
 export CERT_NAME
 
+# write_site_config [http|https]   (default: https when a certificate exists)
 write_site_config() {
-  local tmp variant=http
-  if [ -f "/etc/letsencrypt/live/$CERT_NAME/fullchain.pem" ]; then variant=https; fi
+  local tmp variant=${1:-http}
+  if [ -z "${1:-}" ] && [ -f "/etc/letsencrypt/live/$CERT_NAME/fullchain.pem" ]; then variant=https; fi
   tmp=$(mktemp)
   render "$DEPLOY_DIR/nginx/sparky-$variant.conf" "$tmp"
   strip_ipv6_if_unsupported "$tmp"
@@ -101,8 +103,15 @@ stage_tls() {
   install -d /etc/letsencrypt/renewal-hooks/deploy
   printf '#!/bin/sh\nsystemctl reload nginx\n' >/etc/letsencrypt/renewal-hooks/deploy/sparky-reload-nginx.sh
   chmod 0755 /etc/letsencrypt/renewal-hooks/deploy/sparky-reload-nginx.sh
-  write_site_config
-  nginx -t >>"$SPARKY_LOG" 2>&1 || die "nginx configuration test failed after enabling TLS"
+  write_site_config https
+  local nt
+  if ! nt=$(nginx -t 2>&1); then
+    printf '%s\n' "$nt" | sed 's/^/        /' >&2
+    # never leave a config nginx cannot load (a restart or reboot would take the site down)
+    write_site_config http
+    nginx -t >>"$SPARKY_LOG" 2>&1 && systemctl reload nginx
+    die "nginx configuration test failed after enabling TLS — HTTP config restored; certificate is kept"
+  fi
   run systemctl reload nginx
   systemctl is-enabled --quiet certbot.timer 2>/dev/null && pass "automatic renewal: certbot.timer enabled" || warn "certbot.timer not enabled — check renewal"
   CURRENT_CMD="certbot renew --dry-run"
