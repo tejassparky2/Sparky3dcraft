@@ -156,6 +156,17 @@ export default async function setupStore({ container }: ExecArgs) {
   // 4. Region ---------------------------------------------------------------------
   const providers = await paymentModule.listPaymentProviders({ is_enabled: true })
   let providerIds = providers.map((p) => p.id)
+  // Medusa 2.21.1 never disables a provider that was removed from medusa-config
+  // (registerProvidersInDb only lists still-configured ids), so a provider that
+  // was configured once stays is_enabled forever. Offer only providers that are
+  // configured in THIS process (ids are pp_<identifier>_<config id>).
+  const configModule = container.resolve(ContainerRegistrationKeys.CONFIG_MODULE) as any
+  const configuredIds: string[] = ((configModule?.modules?.[Modules.PAYMENT]?.options?.providers ?? []) as any[]).map(
+    (p) => String(p.id)
+  )
+  const stale = providerIds.filter((id) => id !== "pp_system_default" && !configuredIds.some((c) => id.endsWith(`_${c}`)))
+  if (stale.length) log(`ignoring payment providers no longer configured: ${stale.join(", ")}`)
+  providerIds = providerIds.filter((id) => !stale.includes(id))
   if (isProd || process.env.SPARKY_DISABLE_SYSTEM_PAYMENT === "true") {
     // pp_system_default authorizes without collecting money — never offer it
     // to real customers.
